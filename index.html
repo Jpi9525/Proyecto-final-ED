@@ -33,6 +33,7 @@
 
         nav {
             margin-top: 10px;
+            position: relative;
         }
 
         nav a {
@@ -48,6 +49,37 @@
         nav a:hover {
             background-color: white;
             color: #0056b3;
+        }
+
+        nav .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        nav .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 5px 0;
+            z-index: 1000;
+        }
+
+        nav .dropdown-content a {
+            color: #0056b3;
+            text-decoration: none;
+            display: block;
+            padding: 5px 15px;
+            white-space: nowrap;
+        }
+
+        nav .dropdown-content a:hover {
+            background-color: #f0f0f0;
+        }
+
+        nav .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         main {
@@ -96,15 +128,41 @@
 </head>
 <body>
     <header>
-        <h1>Documentación del Proyecto FINAL ED</h1>
+        <h1>Generador de examenes</h1>
         <nav>
             <a href="#introduccion">Introducción</a>
-            <a href="#marco_teorico">Marco Teórico</a>
-            <a href="#formulacion_matematica">Formulación Matemática</a>
-            <a href="#solucion_ed">Solución de la Ecuación</a>
-            <a href="#analisis_resultados">Análisis de Resultados</a>
-            <a href="#conclusion">Conclusión</a>
-            <a href="#formato">Formato APA</a>
+            <div class="dropdown">
+                <a href="#requisitos">Requisitos</a>
+                <div class="dropdown-content">
+                    <a href="#funcionales">Funcionales</a>
+                    <a href="#no_funcionales">No funcionales</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#diseno">Diseño</a>
+                <div class="dropdown-content">
+                    <a href="#algoritmos">Algoritmos</a>
+                    <a href="#estructuras">Estructuras de datos utilizadas</a>
+                    <a href="#diagramas">Diagramas</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#implementacion">Implementación</a>
+                <div class="dropdown-content">
+                    <a href="#codigo">Código</a>
+                    <a href="#librerias">Librerías</a>
+                    <a href="#herramientas">Herramientas</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#conclusion">Conclusión</a>
+                <div class="dropdown-content">
+                    <a href="#logros">Logros</a>
+                    <a href="#limitaciones">Limitaciones</a>
+                </div>
+            </div>
+            <a href="#manual_de_usuario">Manual de usuario</a>
+            <a href="#referencias">Referencias</a>
         </nav>
     </header>
 
@@ -114,42 +172,71 @@
             <p>Este documento tiene como propósito detallar los aspectos fundamentales del proyecto, abordando la importancia y los objetivos clave.</p>
         </section>
 
-        <section id="marco_teorico">
-            <h2>Marco Teórico</h2>
-            <ul>
-                <li>Definición de conceptos fundamentales relacionados con el proyecto.</li>
-                <li>Revisión de antecedentes relevantes en la literatura.</li>
-            </ul>
+        <section id="requisitos">
+            <h2>Requisitos</h2>
+            <section id="funcionales">
+                <h3>Funcionales</h3>
+                <p>Descripción de los requisitos funcionales necesarios para el proyecto.</p>
+            </section>
+            <section id="no_funcionales">
+                <h3>No funcionales</h3>
+                <p>Descripción de los requisitos no funcionales relevantes para el proyecto.</p>
+            </section>
         </section>
 
-        <section id="formulacion_matematica">
-            <h2>Formulación Matemática</h2>
-            <p>En esta sección se describe el marco matemático que sustenta el proyecto, incluyendo ecuaciones y modelos principales.</p>
+        <section id="diseno">
+            <h2>Diseño</h2>
+            <section id="algoritmos">
+                <h3>Algoritmos</h3>
+                <p>Detalles sobre los algoritmos implementados.</p>
+            </section>
+            <section id="estructuras">
+                <h3>Estructuras de datos utilizadas</h3>
+                <p>Descripción de las estructuras de datos empleadas en el proyecto.</p>
+            </section>
+            <section id="diagramas">
+                <h3>Diagramas</h3>
+                <p>Diagramas relacionados con el diseño del sistema.</p>
+            </section>
         </section>
 
-        <section id="solucion_ed">
-            <h2>Solución de la Ecuación Diferencial</h2>
-            <p>Aquí se presentan los métodos empleados para resolver la ecuación diferencial, destacando los pasos clave y las herramientas utilizadas.</p>
+        <section id="implementacion">
+            <h2>Implementación</h2>
+            <section id="codigo">
+                <h3>Código</h3>
+                <p>Fragmentos de código utilizados en el proyecto.</p>
+            </section>
+            <section id="librerias">
+                <h3>Librerías</h3>
+                <p>Lista de librerías empleadas.</p>
+            </section>
+            <section id="herramientas">
+                <h3>Herramientas</h3>
+                <p>Herramientas utilizadas para la implementación del proyecto.</p>
+            </section>
         </section>
 
-        <section id="analisis_resultados">
-            <h2>Análisis de Resultados</h2>
+        <section id="manual_de_usuario">
+            <h2>Manual de usuario</h2>
             <p>Se discuten los resultados obtenidos tras la resolución, evaluando su precisión y relevancia en el contexto del proyecto.</p>
         </section>
 
         <section id="conclusion">
             <h2>Conclusión</h2>
-            <p>Se resumen los hallazgos principales, enfatizando el cumplimiento de los objetivos planteados y las áreas de mejora futuras.</p>
+            <section id="logros">
+                <h3>Logros</h3>
+                <p>Principales logros obtenidos durante el desarrollo del proyecto.</p>
+            </section>
+            <section id="limitaciones">
+                <h3>Limitaciones</h3>
+                <p>Áreas en las que el proyecto puede mejorar o desafíos encontrados.</p>
+            </section>
         </section>
 
-        <section id="formato">
-            <h2>Formato APA</h2>
+        <section id="referencias">
+            <h2>Referencias</h2>
             <p>La referencia de todos los recursos utilizados en el proyecto sigue las normas del formato APA.</p>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Proyecto FINAL ED. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
