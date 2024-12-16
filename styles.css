@@ -1,0 +1,208 @@
+/* Fuentes y base */
+body {
+    font-family: 'Arial';
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #006400, #0056b3);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+/* Menú de navegación */
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 0 20px;
+    padding: 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: #003d6b;
+    color: white;
+}
+
+/* Contenedor principal */
+.container {
+    margin-top: 120px;
+    padding: 20px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 120px;
+    padding-top: 20px;
+}
+
+/* Índice */
+.index {
+    display: none;
+}
+
+.index.active {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 20px;
+    border-right: 2px solid #ddd;
+    margin-right: 20px;
+    background-color: #f4f7fb;
+    z-index: 500;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.index h2 {
+    font-size: 1.8em;
+    color: #006400;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.index ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.index li {
+    margin-bottom: 15px;
+}
+
+.index a {
+    display: block;
+    font-size: 1.1em;
+    color: #006400;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.index a:hover {
+    background-color: #e0f0e9;
+    color: #003d6b;
+}
+
+/* Contenido principal */
+.content {
+    flex: 4; /* Aumentamos el valor de flex */
+    margin-left: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Secciones */
+.section-content {
+    display: none;
+}
+
+.section-content.active {
+    display: block;
+}
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+section h2 {
+    font-size: 2em;
+    color: #006400;
+    border-bottom: 3px solid #0056b3;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+section h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+section p, section ul {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+}
+
+section ul {
+    list-style-type: disc;
+    padding-left: 30px;
+}
+
+/* Código y tablas */
+pre {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    color: #333;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    color: #007bff;
+}
+
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #006400;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+td:hover {
+    background-color: #f1f1f1;
+}

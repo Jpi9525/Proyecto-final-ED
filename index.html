@@ -3,240 +3,385 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentación</title>
-    <style>
-        body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        header {
-            background: linear-gradient(90deg, #006400, #0056b3);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        nav {
-            margin-top: 10px;
-            position: relative;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: white;
-            color: #0056b3;
-        }
-
-        nav .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        nav .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            padding: 5px 0;
-            z-index: 1000;
-        }
-
-        nav .dropdown-content a {
-            color: #0056b3;
-            text-decoration: none;
-            display: block;
-            padding: 5px 15px;
-            white-space: nowrap;
-        }
-
-        nav .dropdown-content a:hover {
-            background-color: #f0f0f0;
-        }
-
-        nav .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        main {
-            margin: 120px auto 20px auto; /* Ajusta el margen superior para evitar superposición con el header */
-            max-width: 900px;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        section {
-            margin-bottom: 40px;
-        }
-
-        section h2 {
-            font-size: 1.8em;
-            color: #0056b3;
-            border-bottom: 2px solid #006400;
-            padding-bottom: 5px;
-        }
-
-        section p, section ul {
-            font-size: 1em;
-            color: #333;
-        }
-
-        section ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-
-        footer {
-            background-color: #006400;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-    </style>
+    <title>Documentación - Generador de Exámenes</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Generador de examenes</h1>
+        <h1>Generador de Exámenes</h1>
         <nav>
-            <a href="#introduccion">Introducción</a>
-            <div class="dropdown">
-                <a href="#requisitos">Requisitos</a>
-                <div class="dropdown-content">
-                    <a href="#funcionales">Funcionales</a>
-                    <a href="#no_funcionales">No funcionales</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="#diseno">Diseño</a>
-                <div class="dropdown-content">
-                    <a href="#algoritmos">Algoritmos</a>
-                    <a href="#estructuras">Estructuras de datos utilizadas</a>
-                    <a href="#diagramas">Diagramas</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="#implementacion">Implementación</a>
-                <div class="dropdown-content">
-                    <a href="#codigo">Código</a>
-                    <a href="#librerias">Librerías</a>
-                    <a href="#herramientas">Herramientas</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="#conclusion">Conclusión</a>
-                <div class="dropdown-content">
-                    <a href="#logros">Logros</a>
-                    <a href="#limitaciones">Limitaciones</a>
-                </div>
-            </div>
-            <a href="#manual_de_usuario">Manual de usuario</a>
-            <a href="#referencias">Referencias</a>
+            <a href="javascript:void(0);" onclick="showSection('main')">Main</a>
+            <a href="javascript:void(0);" onclick="showSection('implementacion')">Implementación</a>
+            <a href="javascript:void(0);" onclick="showSection('manual_de_usuario')">Manual de Usuario</a>
         </nav>
     </header>
 
-    <main>
-        <section id="introduccion">
-            <h2>Introducción</h2>
-            <p>Este documento tiene como propósito detallar los aspectos fundamentales del proyecto, abordando la importancia y los objetivos clave.</p>
-        </section>
+    <div class="main-container">
+        <!-- Contenedor de Índices y Contenido -->
+        <div class="index-content-container" style="display: flex;">
+            <!-- Índice - Main -->
+            <div class="index" id="main-index" style="flex: 1; margin-right: 20px;">
+                <h2>Main</h2>
+                <ul>
+                    <li><a href="#introduccion">Introducción</a></li>
+                    <li><a href="#requisitos">Requisitos</a></li>
+                    <li><a href="#conclusion">Conclusión</a></li>
+                    <li><a href="#referencias">Referencias</a></li>
+                </ul>
+            </div>
 
-        <section id="requisitos">
-            <h2>Requisitos</h2>
-            <section id="funcionales">
-                <h3>Funcionales</h3>
-                <p>Descripción de los requisitos funcionales necesarios para el proyecto.</p>
-            </section>
-            <section id="no_funcionales">
-                <h3>No funcionales</h3>
-                <p>Descripción de los requisitos no funcionales relevantes para el proyecto.</p>
-            </section>
-        </section>
+            <!-- Índice - Implementación -->
+            <div class="index" id="implementacion-index" style="flex: 1; margin-right: 20px;">
+                <h2>Implementación</h2>
+                <ul>
+                    <li><a href="#codigo">Codigo</a></li>
+                    <li><a href="#librerias">Librerias</a></li>
+                    <li><a href="#herramientas">Downloads</a></li>
+                </ul>
+            </div>
 
-        <section id="diseno">
-            <h2>Diseño</h2>
-            <section id="algoritmos">
-                <h3>Algoritmos</h3>
-                <p>Detalles sobre los algoritmos implementados.</p>
-            </section>
-            <section id="estructuras">
-                <h3>Estructuras de datos utilizadas</h3>
-                <p>Descripción de las estructuras de datos empleadas en el proyecto.</p>
-            </section>
-            <section id="diagramas">
-                <h3>Diagramas</h3>
-                <p>Diagramas relacionados con el diseño del sistema.</p>
-            </section>
-        </section>
+            <!-- Índice - Manual de Usuario -->
+            <div class="index" id="manual-de-usuario-index" style="flex: 1;">
+                <h2>Manual de Usuario</h2>
+                <ul>
+                    <li><a href="#inicio">Inicio Rápido</a></li>
+                    <li><a href="#configuracion">Configuración del Sistema</a></li>
+                    <li><a href="#uso">Uso del Generador</a></li>
+                </ul>
+            </div>
 
-        <section id="implementacion">
-            <h2>Implementación</h2>
-            <section id="codigo">
-                <h3>Código</h3>
-                <p>Fragmentos de código utilizados en el proyecto.</p>
-            </section>
-            <section id="librerias">
-                <h3>Librerías</h3>
-                <p>Lista de librerías empleadas.</p>
-            </section>
-            <section id="herramientas">
-                <h3>Herramientas</h3>
-                <p>Herramientas utilizadas para la implementación del proyecto.</p>
-            </section>
-        </section>
+            <!-- Contenido a la derecha del índice -->
+            <div class="content" style="flex: 3;">
+                <main>
+                    <!-- Sección Main -->
+                    <section id="main" class="section-content active">
+                        <section id="introduccion">
+                            <h2>Introducción</h2>
+                            <p>Este proyecto tiene como objetivo crear un generador de exámenes de ecuaciones diferenciales 
+                                que busca facilitar a los maestros la creación de exámenes y ahorrarles tiempo. 
+                                Esto se logra gracias a un banco de preguntas en CSV, el cual tiene diversas secciones para adaptarse a las necesidades del usuario.
+                            </p>
+                        </section>
 
-        <section id="manual_de_usuario">
-            <h2>Manual de usuario</h2>
-            <p>Se discuten los resultados obtenidos tras la resolución, evaluando su precisión y relevancia en el contexto del proyecto.</p>
-        </section>
+                        <section id="requisitos">
+                            <h2>Requisitos</h2>
+                            <h3 id="funcionales">Funcionales</h3>
+                            <ul>
+                                <li>El usuario podrá crear una cuenta con nombre de usuario y contraseña.</li>
+                                <li>El usuario podrá generar un examen aleatorio con su banco de preguntas personalizado.</li>
+                                <li>El usuario podrá crear un examen personalizado por tema.</li>
+                                <li>El usuario podrá crear un examen personalizado por dificultad.</li>
+                            </ul>
+                            <h3 id="no_funcionales">No Funcionales</h3>
+                            <ul>
+                                <li>El sistema debe ser fácil de usar y accesible.</li>
+                                <li>El sistema debe ser rápido y eficiente.</li>
+                            </ul>
+                        </section>
+                        
+                        <section id="conclusion">
+                            <h2>Conclusión</h2>
+                            <p>Este proyecto nos a habierto el panorama sobre el como podemos implementar lo aprendido en el curso en algo util y 
+                            que las personas puedan usar en su dia a dia.
+                            El proyecto nos ayudo a poder entender mejor los temas vistos en clase como el uso de punteros para manipular datos de manera eficiente, estructuras (struct) para organizar la información, 
+                            memoria dinámica para gestionar recursos en tiempo de ejecución,
+                            recursión para resolver problemas de forma modular, y manejo de archivos para almacenar y recuperar datos de manera persistente. 
+                            </p>
+                        </section>
 
-        <section id="conclusion">
-            <h2>Conclusión</h2>
-            <section id="logros">
-                <h3>Logros</h3>
-                <p>Principales logros obtenidos durante el desarrollo del proyecto.</p>
-            </section>
-            <section id="limitaciones">
-                <h3>Limitaciones</h3>
-                <p>Áreas en las que el proyecto puede mejorar o desafíos encontrados.</p>
-            </section>
-        </section>
+                        <section id="referencias">
+                            <h2>Referencias</h2>
+                            <p>Sotomayor, V. (2024b, enero 2). Ecuaciones diferenciales: la herramienta que todo ingeniero debe poseer - EDEM Escuela de Empresarios. EDEM Escuela de Empresarios https://edem.eu/ecuaciones-diferenciales-la-herramienta-que-todo-ingeniero-debe-poseer/.</p>
+                            <p>López, P. (2020, 28 junio). ¿Qué es un archivo CSV y para qué sirve? GEEKNETIC. https://www.geeknetic.es/Archivo-CSV/que-es-y-para-que-sirve</p>
+                            <p></p>
+                        </section>
+                    </section>
 
-        <section id="referencias">
-            <h2>Referencias</h2>
-            <p>La referencia de todos los recursos utilizados en el proyecto sigue las normas del formato APA.</p>
+                    <!-- Sección Implementación -->
+                    <section id="implementacion" class="section-content">
+                        <section id="codigo">
+                            <h2>Codigo</h2>
+                            <p>Se utilizó un entorno de desarrollo basado en...</p>
+                        </section>
+
+                    <section id="libreria">
+                        <h2>Librerias</h2>
+                        <h3>1.- Cuenta.c</h3>
+
+                        <h3>Descripción del Código</h3>
+                        <p>El código implementa un sistema básico de gestión de cuentas de usuario en C, utilizando estructuras de datos y funciones para permitir la creación, inicio de sesión, carga y guardado de cuentas. Se emplea un archivo de texto para almacenar las cuentas de usuario de manera persistente.</p>
+            
+                        <h3>Estructuras de Datos</h3>
+                        <h4>Cuenta</h4>
+                        <p>La estructura <code>Cuenta</code> representa una cuenta de usuario, que incluye el nombre de usuario y la contraseña asociados.</p>
+                        <ul>
+                            <li><strong>usuario</strong>: Nombre del usuario, almacenado como una cadena de caracteres (<code>char</code>).</li>
+                            <li><strong>contra</strong>: Contraseña del usuario, almacenada como una cadena de caracteres (<code>char</code>).</li>
+                        </ul>
+            
+                        <h3>Funciones</h3>
+                        <table>
+                            <tr>
+                                <th>Función</th>
+                                <th>Descripción</th>
+                            </tr>
+                            <tr>
+                                <td>menu</td>
+                                <td>Muestra el menú principal de opciones al usuario.</td>
+                            </tr>
+                            <tr>
+                                <td>menu_sesion</td>
+                                <td>Controla la interacción con el usuario, permitiendo crear cuentas o iniciar sesión.</td>
+                            </tr>
+                            <tr>
+                                <td>crear_cuenta</td>
+                                <td>Permite al usuario crear una nueva cuenta de usuario.</td>
+                            </tr>
+                            <tr>
+                                <td>login</td>
+                                <td>Verifica si el nombre de usuario y la contraseña coinciden con una cuenta registrada.</td>
+                            </tr>
+                            <tr>
+                                <td>guardar_cuentas</td>
+                                <td>Guarda las cuentas de usuario en un archivo de texto.</td>
+                            </tr>
+                            <tr>
+                                <td>cargar_cuentas</td>
+                                <td>Carga las cuentas de usuario desde un archivo de texto.</td>
+                            </tr>
+                            <tr>
+                                <td>usuario_existe</td>
+                                <td>Verifica si un nombre de usuario ya existe en las cuentas cargadas.</td>
+                            </tr>
+                        </table>
+                
+                        <h3>Ejemplo de Uso</h3>
+                        <pre><code>
+                        int main(int argc, char const * argv[])
+                        {
+                            // Iniciar sesión
+                            inicio_sesion();
+                            return 0;
+                        }
+                
+                        void inicio_sesion()
+                        {
+                            Cuenta *cuentas = NULL;
+                            int total_cuentas = 0;
+                
+                            // Cargar cuentas desde el archivo
+                            cargar_cuentas(&cuentas, &total_cuentas);
+                
+                            // Iniciar el menú de sesiones
+                            menu_sesion(&cuentas, &total_cuentas);
+                
+                            // Guardar cuentas antes de salir
+                            guardar_cuentas(cuentas, total_cuentas);
+                
+                            // Liberar memoria dinámica
+                            free(cuentas);    
+                        }
+                        </code></pre>
+                        <h3>2.- Tablas.c</h3>
+                    <p>Descripción del Código</p>
+                    <p>La librería está diseñada para manejar tablas dinámicas basadas en una estructura flexible y eficiente que encapsula filas, celdas y categorías. Las estructuras principales son TABLE, ROW y CELL, las cuales trabajan en conjunto 
+                        para representar tablas multidimensionales donde cada celda puede contener distintos tipos de datos.</p>
+
+                    <h3>Estructuras de Datos</h3>
+                    <h3>CELL</h3>
+                    <p>Representa una celda dentro de la tabla. Cada celda contiene un dato, un puntero a la siguiente celda en la misma fila (horizontalmente) y un puntero a la siguiente fila (verticalmente).</p>
+                    <ul>
+                        <li><strong>data</strong>: Dato almacenado en la celda, que se obtiene desde un archivo CSV. Los datos se guardan como cadenas de caracteres (<code>char *</code>).</li>
+                        <li><strong>nextColumn</strong>: Puntero a la siguiente celda en la misma fila.</li>
+                        <li><strong>nextRow</strong>: Puntero a la siguiente celda en la misma columna (fila siguiente).</li>
+                        <li><strong>cat</strong>: Etiqueta o categoría que describe el tipo de dato que contiene la celda.</li>
+                    </ul>
+            
+                    <h3>ROW</h3>
+                    <p>Representa una fila en la tabla, que contiene un conjunto de celdas.</p>
+                    <ul>
+                        <li><strong>firstCell</strong>: Puntero a la primera celda de la fila.</li>
+                        <li><strong>next</strong>: Puntero a la siguiente fila en la tabla.</li>
+                    </ul>
+            
+                    <h3>TABLE</h3>
+                    <p>Representa la tabla completa, que contiene varias filas.</p>
+                    <ul>
+                        <li><strong>firstROW</strong>: Puntero a la primera fila de la tabla.</li>
+                        <li><strong>auxPtr</strong>: Arreglo de punteros a las celdas en cada columna para enlazarlas verticalmente.</li>
+                        <li><strong>numCat</strong>: Número de categorías (columnas) en la tabla.</li>
+                        <li><strong>CAT</strong>: Arreglo de cadenas de caracteres que contienen los nombres de las categorías (columnas) en la tabla.</li>
+                    </ul>
+
+                    <h3>Resumen de la estructura de datos</h3>
+                    <p>
+                        La estructura <strong>TABLE</strong> encapsula la tabla y permite acceder a las filas y categorías.
+                    </p>
+                    <p>
+                        Las filas (<strong>ROW</strong>) son accesibles secuencialmente a través del puntero <code>next</code>, y cada fila contiene un mapa de celdas.
+                    </p>
+                    <p>
+                        Las celdas (<strong>CELL</strong>) están conectadas horizontalmente (<code>nextColumn</code>) y verticalmente (<code>nextRow</code>), 
+                        formando una estructura que permite navegar toda la tabla eficientemente.
+                    </p>
+                    <p>
+                        Cada celda almacena datos en formato <code>char*</code>, con una etiqueta de categoría que define cómo debe interpretarse el dato.
+                    </p>
+                    <h3>Ejemplo de Navegación de la Tabla</h3>
+                    <ul>
+                        <li>Desde <code>TABLE->firstROW</code> se accede a la primera fila.</li>
+                        <li>Desde <code>ROW->firstCell</code> se navega por las celdas de la fila usando <code>nextColumn</code>.</li>
+                        <li>Para moverse a la siguiente fila, se utiliza <code>ROW->next</code>.</li>
+                        <li>Para navegar por una columna completa, se utiliza <code>CELL->nextRow</code>.</li>
+                    </ul>
+                    <h3>Esta arquitectura flexible permite:</h3>
+                    <ul>
+                        <li>Representar tablas de cualquier tamaño.</li>
+                        <li>Almacenar datos heterogéneos con diferentes categorías.</li>
+                        <li>Navegar la tabla horizontal y verticalmente de manera eficiente.</li>
+                        <li>Facilitar la manipulación de datos provenientes de archivos como CSV.</li>
+                    </ul>
+                    <!-- Detalles de la implementación -->
+                    <h3>Funciones</h3>
+                    <table>
+                        <tr>
+                            <th>Función</th>
+                            <th>Descripción</th>
+                        </tr>
+                        <tr>
+                            <td>createTable</td>
+                            <td>Crea una nueva tabla con un número específico de categorías (columnas).</td>
+                        </tr>
+                        <tr>
+                            <td>createRow</td>
+                            <td>Crea una nueva fila vacía.</td>
+                        </tr>
+                        <tr>
+                            <td>addRow</td>
+                            <td>Añade una nueva fila a la tabla.</td>
+                        </tr>
+                        <tr>
+                            <td>createCell</td>
+                            <td> Crea una nueva celda con un dato específico y una categoría.</td>
+                        </tr>
+                        <tr>
+                            <td>addCell</td>
+                            <td> Añade una celda en una fila de una tabla existente.</td>
+                        </tr>
+                    </table>
+                    <h3>Ejemplo de Uso</h3>
+                    <pre><code>
+                    int main(int argc, char const *argv[])
+                    {
+                        // Crear una tabla con 5 categorías
+                        TABLE *t = createTable(5);
+                        
+                        // Cargar datos desde un archivo CSV
+                        upload_CSV_Table(t, "problemas.csv");
+                        
+                        // Filtrar los problemas que tienen una dificultad mayor a 3
+                        TABLE *t_1 = filterByIntCat(t, "Dificultad", 1, 3); // FILTRAR DIFICULTAD > 3
+                        
+                        // Imprimir la columna "Problema" de la tabla filtrada en un archivo de texto
+                        printColumnToTxT(t_1, "Problema");
+                    }
+                    </code></pre>
+                    <h3>Funciones importantes</h3>
+                    <h3>upload_CSV_Table</h3>
+                    <p><strong>Descripción:</strong> Esta función carga el contenido de un archivo CSV en una estructura de tabla (TABLE).</p>
+                     <h4>Parámetros:</h4>
+                     <ul>
+                         <li><code>TABLE *t</code>: Puntero a la tabla donde se almacenará la información del CSV.</li>
+                        <li><code>const char *fileName</code>: Nombre o ruta del archivo CSV a cargar.</li>
+                    </ul>
+                    <h4>Funcionamiento:</h4>
+                    <p>La función lee el archivo línea por línea, tokeniza los datos separados por comas y los almacena en la estructura de la tabla, eliminando caracteres de salto de línea y asignando etiquetas según corresponda.</p>
+                    <pre><code>void upload_CSV_Table(TABLE *t, const char *fileName);</code></pre>
+
+                    <h3>printTable</h3>
+                    <p><strong>Descripción:</strong> Imprime el contenido de una tabla en formato tabular en la consola.</p>
+                    <h4>Parámetros:</h4>
+                    <ul>
+                        <li><code>TABLE *t</code>: Puntero a la tabla que se imprimirá.</li>
+                     </ul>
+                    <h4>Funcionamiento:</h4>
+                    <p>Itera sobre las filas y columnas de la tabla y las imprime formateadas con separadores visuales.</p>
+                    <pre><code>void printTable(TABLE *t);</code></pre>
+            
+                    <h3>rowCopy</h3>
+                    <p><strong>Descripción:</strong> Copia el contenido de una fila específica en una nueva fila dentro de la tabla.</p>
+                    <h4>Parámetros:</h4>
+                    <ul>
+                        <li><code>TABLE *t</code>: Puntero a la tabla donde se añadirá la nueva fila.</li>
+                        <li><code>ROW *cRow</code>: Puntero a la fila que será copiada.</li>
+                    </ul>
+                    <pre><code>ROW *rowCopy(TABLE *t, ROW *cRow);</code></pre>
+            
+                     <h3>filterByIntCat</h3>
+                     <p><strong>Descripción:</strong> Filtra las filas de una tabla según una condición aplicada a una categoría numérica.</p>
+                    <h4>Parámetros:</h4>
+                     <ul>
+                        <li><code>TABLE *t</code>: Puntero a la tabla que será filtrada.</li>
+                        <li><code>char *cat</code>: Nombre de la categoría numérica a filtrar.</li>
+                        <li><code>int filterType</code>: Tipo de comparación (1 = mayor que, 2 = menor que, etc.).</li>
+                        <li><code>int com</code>: Valor con el que se comparará cada dato.</li>
+                    </ul>
+                    <pre><code>TABLE *filterByIntCat(TABLE *t, char *cat, int filterType, int com);</code></pre>
+            
+                    <h3>filterByStringCat</h3>
+                    <p><strong>Descripción:</strong> Filtra las filas de una tabla según una condición aplicada a una categoría de texto.</p>
+                    <h4>Parámetros:</h4>
+                    <ul>
+                        <li><code>TABLE *t</code>: Puntero a la tabla que será filtrada.</li>
+                        <li><code>char *categ</code>: Nombre de la categoría de texto a filtrar.</li>
+                        <li><code>char **cat</code>: Lista de valores aceptados para la categoría.</li>
+                    </ul>
+                    <pre><code>TABLE *filterByStringCat(TABLE *t, char *categ, char **cat);</code></pre>
+            
+                    <h3>compare_filterauxiliar</h3>
+                    <p><strong>Descripción:</strong> Compara dos valores enteros según un tipo de comparación.</p>
+                    <h4>Parámetros:</h4>
+                    <ul>
+                        <li><code>int a</code>: Primer valor.</li>
+                        <li><code>int b</code>: Segundo valor.</li>
+                        <li><code>int filterType</code>: Tipo de comparación (1 = mayor que, 2 = menor que, etc.).</li>
+                    </ul>
+                    <pre><code>int compare_filterauxiliar(int a, int b, int filterType);</code></pre>
+            </section>
+                
+                <section id="herramientas">
+                    <h2>Descargas</h2>
+                    <a href="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal" download="Inicio.h">Inicio sesión</a>
+                    <a href="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal" download="TABLAS.h">Tablas</a>
+                    <a href="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal" download="final.c">Proyecto final</a>
+                    <a href="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal" download="problemas.csv">Problemas</a>
+                </section>
+    
+            </section>       
         </section>
-    </main>
+    </section>
+                    <!-- Sección Manual de Usuario -->
+                    <section id="manual_de_usuario" class="section-content">
+                        <section id="inicio">
+                            <h2>Inicio Rápido</h2>
+                            <p>Para comenzar a usar el generador, primero debes...</p>
+                        </section>
+
+                        <section id="configuracion">
+                            <h2>Configuración del Sistema</h2>
+                            <p>Asegúrate de configurar correctamente las variables...</p>
+                        </section>
+
+                        <section id="uso">
+                            <h2>Uso del Generador</h2>
+                            <p>Para usar el generador de exámenes, sigue estos pasos...</p>
+                        </section>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
