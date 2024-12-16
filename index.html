@@ -44,9 +44,8 @@
             <div class="index" id="manual-de-usuario-index" style="flex: 1;">
                 <h2>Manual de Usuario</h2>
                 <ul>
-                    <li><a href="#inicio">Inicio Rápido</a></li>
-                    <li><a href="#configuracion">Configuración del Sistema</a></li>
-                    <li><a href="#uso">Uso del Generador</a></li>
+                    <li><a href="#inicio">Inicio </a></li>
+                    <li><a href="#uso">Uso</a></li>
                 </ul>
             </div>
 
@@ -101,24 +100,241 @@
                     <section id="implementacion" class="section-content">
                         <section id="codigo">
                             <h2>Codigo</h2>
-                            <p>Se utilizó un entorno de desarrollo basado en...</p>
-                        </section>
+                            <h3>Descripción del Código</h3>
+                                <p>Este código implementa un generador de exámenes aleatorios en C, utilizando una tabla que almacena preguntas. El programa permite cargar un archivo CSV con preguntas, filtrar por categorías, elegir la cantidad de preguntas por dificultad y generar un examen en un archivo de texto. El sistema emplea estructuras de datos para representar las tablas y filas de preguntas, y permite la manipulación dinámica de la información.</p>
 
-                    <section id="libreria">
-                        <h2>Librerias</h2>
-                        <h3>1.- Cuenta.c</h3>
+                                <h3>Estructuras de Datos</h3>
 
-                        <h3>Descripción del Código</h3>
-                        <p>El código implementa un sistema básico de gestión de cuentas de usuario en C, utilizando estructuras de datos y funciones para permitir la creación, inicio de sesión, carga y guardado de cuentas. Se emplea un archivo de texto para almacenar las cuentas de usuario de manera persistente.</p>
-            
+                                <h4>Tabla</h4>
+                                <p>La estructura <code>TABLE</code> representa una tabla que almacena varias filas, cada una de ellas con información sobre las preguntas del examen.</p>
+                                <ul>
+                                    <li><strong>numCat</strong>: Número de categorías de preguntas disponibles.</li>
+                                    <li><strong>CAT</strong>: Un arreglo de cadenas que contiene los nombres de las categorías.</li>
+                                    <li><strong>firstROW</strong>: Puntero a la primera fila de la tabla.</li>
+                                </ul>
+
+                                <h4>Fila</h4>
+                                <p>La estructura <code>ROW</code> representa una fila de la tabla, que contiene las celdas de datos para una pregunta en particular.</p>
+                                <ul>
+                                    <li><strong>firstCell</strong>: Puntero a la primera celda de la fila.</li>
+                                    <li><strong>next</strong>: Puntero a la siguiente fila de la tabla.</li>
+                                </ul>
+
+                                <h4>Celda</h4>
+                                <p>La estructura <code>CELL</code> representa una celda individual dentro de una fila, que contiene un dato específico de la pregunta.</p>
+                                <ul>
+                                    <li><strong>data</strong>: El valor o contenido de la celda (por ejemplo, texto de la pregunta o respuesta).</li>
+                                    <li><strong>nextRow</strong>: Puntero a la siguiente celda en la misma columna.</li>
+                                    <li><strong>nextColumn</strong>: Puntero a la siguiente celda en la misma fila, en otra columna.</li>
+                                </ul>
+
+                                <h3>Funciones</h3>
+                                <table>
+                                    <tr>
+                                        <th>Función</th>
+                                        <th>Descripción</th>
+                                    </tr>
+                                    <tr>
+                                        <td>menuu</td>
+                                        <td>Muestra el menú principal con las opciones para cargar el archivo CSV, elegir temas, seleccionar la cantidad de problemas, generar el examen, limpiar la tabla y salir.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>validarent</td>
+                                        <td>Valida que la entrada proporcionada por el usuario sea un número entero válido.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>randTable</td>
+                                        <td>Genera un examen aleatorio según las opciones seleccionadas (temas y cantidad de problemas por dificultad).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>moveToRow</td>
+                                        <td>Recorre las filas de la tabla hasta llegar a la fila indicada por el índice.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>checkIfRepated</td>
+                                        <td>Verifica si una fila ya ha sido seleccionada previamente para el examen generado.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>printColumnToTxT</td>
+                                        <td>Imprime una columna específica de la tabla (por ejemplo, las preguntas) en un archivo de texto.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>clean</td>
+                                        <td>Limpia la pantalla (comando específico para el sistema operativo).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pausa</td>
+                                        <td>Pausa la ejecución del programa, esperando la entrada del usuario.</td>
+                                    </tr>
+                                </table>
+
+                                <h3>Ejemplo de Uso</h3>
+                                <pre><code>
+                                int main(int argc, char const * argv[])
+                                {
+                                    // Iniciar sesión
+                                    inicio_sesion();
+                                    return 0;
+                                }
+
+                                void inicio_sesion()
+                                {
+                                    TABLE *t = createTable(5);
+                                    int probs[5] = {0};
+                                    
+                                    // Iniciar el menú de sesión
+                                    menuu(t, probs);
+                                }
+                                </code></pre>
+
+                                <h3>Flujo del Programa</h3>
+                                <p>El flujo del programa es el siguiente:</p>
+                                <ol>
+                                    <li>Se muestra un mensaje de bienvenida e inicio de sesión.</li>
+                                    <li>El usuario puede elegir entre las diferentes opciones del menú para cargar un archivo CSV, elegir temas, seleccionar la cantidad de problemas y generar el examen.</li>
+                                    <li>Al generar el examen, se crea un archivo de texto con las preguntas seleccionadas.</li>
+                                    <li>Finalmente, el programa guarda las cuentas de usuario y limpia la memoria dinámica antes de finalizar.</li>
+                                </ol>
+                            </section>
+
+                        <section id="libreria">
+                            <h2>Librerias</h2>
+                            <h3>1.- Cuenta.h</h3>
+
+                            <h3>Descripción del Código</h3>
+                            <p>El código implementa un sistema básico de gestión de cuentas de usuario en C, utilizando estructuras de datos y funciones para permitir la creación, inicio de sesión, carga y guardado de cuentas. Se emplea un archivo de texto para almacenar las cuentas de usuario de manera persistente.</p>
+                
+                            <h3>Estructuras de Datos</h3>
+                            <h4>Cuenta</h4>
+                            <p>La estructura <code>Cuenta</code> representa una cuenta de usuario, que incluye el nombre de usuario y la contraseña asociados.</p>
+                            <ul>
+                                <li><strong>usuario</strong>: Nombre del usuario, almacenado como una cadena de caracteres (<code>char</code>).</li>
+                                <li><strong>contra</strong>: Contraseña del usuario, almacenada como una cadena de caracteres (<code>char</code>).</li>
+                            </ul>
+                
+                            <h3>Funciones</h3>
+                            <table>
+                                <tr>
+                                    <th>Función</th>
+                                    <th>Descripción</th>
+                                </tr>
+                                <tr>
+                                    <td>menu</td>
+                                    <td>Muestra el menú principal de opciones al usuario.</td>
+                                </tr>
+                                <tr>
+                                    <td>menu_sesion</td>
+                                    <td>Controla la interacción con el usuario, permitiendo crear cuentas o iniciar sesión.</td>
+                                </tr>
+                                <tr>
+                                    <td>crear_cuenta</td>
+                                    <td>Permite al usuario crear una nueva cuenta de usuario.</td>
+                                </tr>
+                                <tr>
+                                    <td>login</td>
+                                    <td>Verifica si el nombre de usuario y la contraseña coinciden con una cuenta registrada.</td>
+                                </tr>
+                                <tr>
+                                    <td>guardar_cuentas</td>
+                                    <td>Guarda las cuentas de usuario en un archivo de texto.</td>
+                                </tr>
+                                <tr>
+                                    <td>cargar_cuentas</td>
+                                    <td>Carga las cuentas de usuario desde un archivo de texto.</td>
+                                </tr>
+                                <tr>
+                                    <td>usuario_existe</td>
+                                    <td>Verifica si un nombre de usuario ya existe en las cuentas cargadas.</td>
+                                </tr>
+                            </table>
+                    
+                            <h3>Ejemplo de Uso</h3>
+                            <pre><code>
+                            int main(int argc, char const * argv[])
+                            {
+                                // Iniciar sesión
+                                inicio_sesion();
+                                return 0;
+                            }
+                    
+                            void inicio_sesion()
+                            {
+                                Cuenta *cuentas = NULL;
+                                int total_cuentas = 0;
+                    
+                                // Cargar cuentas desde el archivo
+                                cargar_cuentas(&cuentas, &total_cuentas);
+                    
+                                // Iniciar el menú de sesiones
+                                menu_sesion(&cuentas, &total_cuentas);
+                    
+                                // Guardar cuentas antes de salir
+                                guardar_cuentas(cuentas, total_cuentas);
+                    
+                                // Liberar memoria dinámica
+                                free(cuentas);    
+                            }
+                            </code></pre>
+                            <h3>2.- Tablas.h</h3>
+                        <p>Descripción del Código</p>
+                        <p>La librería está diseñada para manejar tablas dinámicas basadas en una estructura flexible y eficiente que encapsula filas, celdas y categorías. Las estructuras principales son TABLE, ROW y CELL, las cuales trabajan en conjunto 
+                            para representar tablas multidimensionales donde cada celda puede contener distintos tipos de datos.</p>
+
                         <h3>Estructuras de Datos</h3>
-                        <h4>Cuenta</h4>
-                        <p>La estructura <code>Cuenta</code> representa una cuenta de usuario, que incluye el nombre de usuario y la contraseña asociados.</p>
+                        <h3>CELL</h3>
+                        <p>Representa una celda dentro de la tabla. Cada celda contiene un dato, un puntero a la siguiente celda en la misma fila (horizontalmente) y un puntero a la siguiente fila (verticalmente).</p>
                         <ul>
-                            <li><strong>usuario</strong>: Nombre del usuario, almacenado como una cadena de caracteres (<code>char</code>).</li>
-                            <li><strong>contra</strong>: Contraseña del usuario, almacenada como una cadena de caracteres (<code>char</code>).</li>
+                            <li><strong>data</strong>: Dato almacenado en la celda, que se obtiene desde un archivo CSV. Los datos se guardan como cadenas de caracteres (<code>char *</code>).</li>
+                            <li><strong>nextColumn</strong>: Puntero a la siguiente celda en la misma fila.</li>
+                            <li><strong>nextRow</strong>: Puntero a la siguiente celda en la misma columna (fila siguiente).</li>
+                            <li><strong>cat</strong>: Etiqueta o categoría que describe el tipo de dato que contiene la celda.</li>
                         </ul>
-            
+                
+                        <h3>ROW</h3>
+                        <p>Representa una fila en la tabla, que contiene un conjunto de celdas.</p>
+                        <ul>
+                            <li><strong>firstCell</strong>: Puntero a la primera celda de la fila.</li>
+                            <li><strong>next</strong>: Puntero a la siguiente fila en la tabla.</li>
+                        </ul>
+                
+                        <h3>TABLE</h3>
+                        <p>Representa la tabla completa, que contiene varias filas.</p>
+                        <ul>
+                            <li><strong>firstROW</strong>: Puntero a la primera fila de la tabla.</li>
+                            <li><strong>auxPtr</strong>: Arreglo de punteros a las celdas en cada columna para enlazarlas verticalmente.</li>
+                            <li><strong>numCat</strong>: Número de categorías (columnas) en la tabla.</li>
+                            <li><strong>CAT</strong>: Arreglo de cadenas de caracteres que contienen los nombres de las categorías (columnas) en la tabla.</li>
+                        </ul>
+
+                        <h3>Resumen de la estructura de datos</h3>
+                        <p>
+                            La estructura <strong>TABLE</strong> encapsula la tabla y permite acceder a las filas y categorías.
+                        </p>
+                        <p>
+                            Las filas (<strong>ROW</strong>) son accesibles secuencialmente a través del puntero <code>next</code>, y cada fila contiene un mapa de celdas.
+                        </p>
+                        <p>
+                            Las celdas (<strong>CELL</strong>) están conectadas horizontalmente (<code>nextColumn</code>) y verticalmente (<code>nextRow</code>), 
+                            formando una estructura que permite navegar toda la tabla eficientemente.
+                        </p>
+                        <p>
+                            Cada celda almacena datos en formato <code>char*</code>, con una etiqueta de categoría que define cómo debe interpretarse el dato.
+                        </p>
+                        <h3>Ejemplo de Navegación de la Tabla</h3>
+                        <ul>
+                            <li>Desde <code>TABLE->firstROW</code> se accede a la primera fila.</li>
+                            <li>Desde <code>ROW->firstCell</code> se navega por las celdas de la fila usando <code>nextColumn</code>.</li>
+                            <li>Para moverse a la siguiente fila, se utiliza <code>ROW->next</code>.</li>
+                            <li>Para navegar por una columna completa, se utiliza <code>CELL->nextRow</code>.</li>
+                        </ul>
+                        <h3>Esta arquitectura flexible permite:</h3>
+                        <ul>
+                            <li>Representar tablas de cualquier tamaño.</li>
+                            <li>Almacenar datos heterogéneos con diferentes categorías.</li>
+                            <li>Navegar la tabla horizontal y verticalmente de manera eficiente.</li>
+                            <li>Facilitar la manipulación de datos provenientes de archivos como CSV.</li>
+                        </ul>
+                        <!-- Detalles de la implementación -->
                         <h3>Funciones</h3>
                         <table>
                             <tr>
@@ -126,227 +342,104 @@
                                 <th>Descripción</th>
                             </tr>
                             <tr>
-                                <td>menu</td>
-                                <td>Muestra el menú principal de opciones al usuario.</td>
+                                <td>createTable</td>
+                                <td>Crea una nueva tabla con un número específico de categorías (columnas).</td>
                             </tr>
                             <tr>
-                                <td>menu_sesion</td>
-                                <td>Controla la interacción con el usuario, permitiendo crear cuentas o iniciar sesión.</td>
+                                <td>createRow</td>
+                                <td>Crea una nueva fila vacía.</td>
                             </tr>
                             <tr>
-                                <td>crear_cuenta</td>
-                                <td>Permite al usuario crear una nueva cuenta de usuario.</td>
+                                <td>addRow</td>
+                                <td>Añade una nueva fila a la tabla.</td>
                             </tr>
                             <tr>
-                                <td>login</td>
-                                <td>Verifica si el nombre de usuario y la contraseña coinciden con una cuenta registrada.</td>
+                                <td>createCell</td>
+                                <td> Crea una nueva celda con un dato específico y una categoría.</td>
                             </tr>
                             <tr>
-                                <td>guardar_cuentas</td>
-                                <td>Guarda las cuentas de usuario en un archivo de texto.</td>
-                            </tr>
-                            <tr>
-                                <td>cargar_cuentas</td>
-                                <td>Carga las cuentas de usuario desde un archivo de texto.</td>
-                            </tr>
-                            <tr>
-                                <td>usuario_existe</td>
-                                <td>Verifica si un nombre de usuario ya existe en las cuentas cargadas.</td>
+                                <td>addCell</td>
+                                <td> Añade una celda en una fila de una tabla existente.</td>
                             </tr>
                         </table>
-                
                         <h3>Ejemplo de Uso</h3>
                         <pre><code>
-                        int main(int argc, char const * argv[])
+                        int main(int argc, char const *argv[])
                         {
-                            // Iniciar sesión
-                            inicio_sesion();
-                            return 0;
-                        }
-                
-                        void inicio_sesion()
-                        {
-                            Cuenta *cuentas = NULL;
-                            int total_cuentas = 0;
-                
-                            // Cargar cuentas desde el archivo
-                            cargar_cuentas(&cuentas, &total_cuentas);
-                
-                            // Iniciar el menú de sesiones
-                            menu_sesion(&cuentas, &total_cuentas);
-                
-                            // Guardar cuentas antes de salir
-                            guardar_cuentas(cuentas, total_cuentas);
-                
-                            // Liberar memoria dinámica
-                            free(cuentas);    
+                            // Crear una tabla con 5 categorías
+                            TABLE *t = createTable(5);
+                            
+                            // Cargar datos desde un archivo CSV
+                            upload_CSV_Table(t, "problemas.csv");
+                            
+                            // Filtrar los problemas que tienen una dificultad mayor a 3
+                            TABLE *t_1 = filterByIntCat(t, "Dificultad", 1, 3); // FILTRAR DIFICULTAD > 3
+                            
+                            // Imprimir la columna "Problema" de la tabla filtrada en un archivo de texto
+                            printColumnToTxT(t_1, "Problema");
                         }
                         </code></pre>
-                        <h3>2.- Tablas.c</h3>
-                    <p>Descripción del Código</p>
-                    <p>La librería está diseñada para manejar tablas dinámicas basadas en una estructura flexible y eficiente que encapsula filas, celdas y categorías. Las estructuras principales son TABLE, ROW y CELL, las cuales trabajan en conjunto 
-                        para representar tablas multidimensionales donde cada celda puede contener distintos tipos de datos.</p>
+                        <h3>Funciones importantes</h3>
+                        <h3>upload_CSV_Table</h3>
+                        <p><strong>Descripción:</strong> Esta función carga el contenido de un archivo CSV en una estructura de tabla (TABLE).</p>
+                        <h4>Parámetros:</h4>
+                        <ul>
+                            <li><code>TABLE *t</code>: Puntero a la tabla donde se almacenará la información del CSV.</li>
+                            <li><code>const char *fileName</code>: Nombre o ruta del archivo CSV a cargar.</li>
+                        </ul>
+                        <h4>Funcionamiento:</h4>
+                        <p>La función lee el archivo línea por línea, tokeniza los datos separados por comas y los almacena en la estructura de la tabla, eliminando caracteres de salto de línea y asignando etiquetas según corresponda.</p>
+                        <pre><code>void upload_CSV_Table(TABLE *t, const char *fileName);</code></pre>
 
-                    <h3>Estructuras de Datos</h3>
-                    <h3>CELL</h3>
-                    <p>Representa una celda dentro de la tabla. Cada celda contiene un dato, un puntero a la siguiente celda en la misma fila (horizontalmente) y un puntero a la siguiente fila (verticalmente).</p>
-                    <ul>
-                        <li><strong>data</strong>: Dato almacenado en la celda, que se obtiene desde un archivo CSV. Los datos se guardan como cadenas de caracteres (<code>char *</code>).</li>
-                        <li><strong>nextColumn</strong>: Puntero a la siguiente celda en la misma fila.</li>
-                        <li><strong>nextRow</strong>: Puntero a la siguiente celda en la misma columna (fila siguiente).</li>
-                        <li><strong>cat</strong>: Etiqueta o categoría que describe el tipo de dato que contiene la celda.</li>
-                    </ul>
-            
-                    <h3>ROW</h3>
-                    <p>Representa una fila en la tabla, que contiene un conjunto de celdas.</p>
-                    <ul>
-                        <li><strong>firstCell</strong>: Puntero a la primera celda de la fila.</li>
-                        <li><strong>next</strong>: Puntero a la siguiente fila en la tabla.</li>
-                    </ul>
-            
-                    <h3>TABLE</h3>
-                    <p>Representa la tabla completa, que contiene varias filas.</p>
-                    <ul>
-                        <li><strong>firstROW</strong>: Puntero a la primera fila de la tabla.</li>
-                        <li><strong>auxPtr</strong>: Arreglo de punteros a las celdas en cada columna para enlazarlas verticalmente.</li>
-                        <li><strong>numCat</strong>: Número de categorías (columnas) en la tabla.</li>
-                        <li><strong>CAT</strong>: Arreglo de cadenas de caracteres que contienen los nombres de las categorías (columnas) en la tabla.</li>
-                    </ul>
-
-                    <h3>Resumen de la estructura de datos</h3>
-                    <p>
-                        La estructura <strong>TABLE</strong> encapsula la tabla y permite acceder a las filas y categorías.
-                    </p>
-                    <p>
-                        Las filas (<strong>ROW</strong>) son accesibles secuencialmente a través del puntero <code>next</code>, y cada fila contiene un mapa de celdas.
-                    </p>
-                    <p>
-                        Las celdas (<strong>CELL</strong>) están conectadas horizontalmente (<code>nextColumn</code>) y verticalmente (<code>nextRow</code>), 
-                        formando una estructura que permite navegar toda la tabla eficientemente.
-                    </p>
-                    <p>
-                        Cada celda almacena datos en formato <code>char*</code>, con una etiqueta de categoría que define cómo debe interpretarse el dato.
-                    </p>
-                    <h3>Ejemplo de Navegación de la Tabla</h3>
-                    <ul>
-                        <li>Desde <code>TABLE->firstROW</code> se accede a la primera fila.</li>
-                        <li>Desde <code>ROW->firstCell</code> se navega por las celdas de la fila usando <code>nextColumn</code>.</li>
-                        <li>Para moverse a la siguiente fila, se utiliza <code>ROW->next</code>.</li>
-                        <li>Para navegar por una columna completa, se utiliza <code>CELL->nextRow</code>.</li>
-                    </ul>
-                    <h3>Esta arquitectura flexible permite:</h3>
-                    <ul>
-                        <li>Representar tablas de cualquier tamaño.</li>
-                        <li>Almacenar datos heterogéneos con diferentes categorías.</li>
-                        <li>Navegar la tabla horizontal y verticalmente de manera eficiente.</li>
-                        <li>Facilitar la manipulación de datos provenientes de archivos como CSV.</li>
-                    </ul>
-                    <!-- Detalles de la implementación -->
-                    <h3>Funciones</h3>
-                    <table>
-                        <tr>
-                            <th>Función</th>
-                            <th>Descripción</th>
-                        </tr>
-                        <tr>
-                            <td>createTable</td>
-                            <td>Crea una nueva tabla con un número específico de categorías (columnas).</td>
-                        </tr>
-                        <tr>
-                            <td>createRow</td>
-                            <td>Crea una nueva fila vacía.</td>
-                        </tr>
-                        <tr>
-                            <td>addRow</td>
-                            <td>Añade una nueva fila a la tabla.</td>
-                        </tr>
-                        <tr>
-                            <td>createCell</td>
-                            <td> Crea una nueva celda con un dato específico y una categoría.</td>
-                        </tr>
-                        <tr>
-                            <td>addCell</td>
-                            <td> Añade una celda en una fila de una tabla existente.</td>
-                        </tr>
-                    </table>
-                    <h3>Ejemplo de Uso</h3>
-                    <pre><code>
-                    int main(int argc, char const *argv[])
-                    {
-                        // Crear una tabla con 5 categorías
-                        TABLE *t = createTable(5);
-                        
-                        // Cargar datos desde un archivo CSV
-                        upload_CSV_Table(t, "problemas.csv");
-                        
-                        // Filtrar los problemas que tienen una dificultad mayor a 3
-                        TABLE *t_1 = filterByIntCat(t, "Dificultad", 1, 3); // FILTRAR DIFICULTAD > 3
-                        
-                        // Imprimir la columna "Problema" de la tabla filtrada en un archivo de texto
-                        printColumnToTxT(t_1, "Problema");
-                    }
-                    </code></pre>
-                    <h3>Funciones importantes</h3>
-                    <h3>upload_CSV_Table</h3>
-                    <p><strong>Descripción:</strong> Esta función carga el contenido de un archivo CSV en una estructura de tabla (TABLE).</p>
-                     <h4>Parámetros:</h4>
-                     <ul>
-                         <li><code>TABLE *t</code>: Puntero a la tabla donde se almacenará la información del CSV.</li>
-                        <li><code>const char *fileName</code>: Nombre o ruta del archivo CSV a cargar.</li>
-                    </ul>
-                    <h4>Funcionamiento:</h4>
-                    <p>La función lee el archivo línea por línea, tokeniza los datos separados por comas y los almacena en la estructura de la tabla, eliminando caracteres de salto de línea y asignando etiquetas según corresponda.</p>
-                    <pre><code>void upload_CSV_Table(TABLE *t, const char *fileName);</code></pre>
-
-                    <h3>printTable</h3>
-                    <p><strong>Descripción:</strong> Imprime el contenido de una tabla en formato tabular en la consola.</p>
-                    <h4>Parámetros:</h4>
-                    <ul>
-                        <li><code>TABLE *t</code>: Puntero a la tabla que se imprimirá.</li>
-                     </ul>
-                    <h4>Funcionamiento:</h4>
-                    <p>Itera sobre las filas y columnas de la tabla y las imprime formateadas con separadores visuales.</p>
-                    <pre><code>void printTable(TABLE *t);</code></pre>
-            
-                    <h3>rowCopy</h3>
-                    <p><strong>Descripción:</strong> Copia el contenido de una fila específica en una nueva fila dentro de la tabla.</p>
-                    <h4>Parámetros:</h4>
-                    <ul>
-                        <li><code>TABLE *t</code>: Puntero a la tabla donde se añadirá la nueva fila.</li>
-                        <li><code>ROW *cRow</code>: Puntero a la fila que será copiada.</li>
-                    </ul>
-                    <pre><code>ROW *rowCopy(TABLE *t, ROW *cRow);</code></pre>
-            
-                     <h3>filterByIntCat</h3>
-                     <p><strong>Descripción:</strong> Filtra las filas de una tabla según una condición aplicada a una categoría numérica.</p>
-                    <h4>Parámetros:</h4>
-                     <ul>
-                        <li><code>TABLE *t</code>: Puntero a la tabla que será filtrada.</li>
-                        <li><code>char *cat</code>: Nombre de la categoría numérica a filtrar.</li>
-                        <li><code>int filterType</code>: Tipo de comparación (1 = mayor que, 2 = menor que, etc.).</li>
-                        <li><code>int com</code>: Valor con el que se comparará cada dato.</li>
-                    </ul>
-                    <pre><code>TABLE *filterByIntCat(TABLE *t, char *cat, int filterType, int com);</code></pre>
-            
-                    <h3>filterByStringCat</h3>
-                    <p><strong>Descripción:</strong> Filtra las filas de una tabla según una condición aplicada a una categoría de texto.</p>
-                    <h4>Parámetros:</h4>
-                    <ul>
-                        <li><code>TABLE *t</code>: Puntero a la tabla que será filtrada.</li>
-                        <li><code>char *categ</code>: Nombre de la categoría de texto a filtrar.</li>
-                        <li><code>char **cat</code>: Lista de valores aceptados para la categoría.</li>
-                    </ul>
-                    <pre><code>TABLE *filterByStringCat(TABLE *t, char *categ, char **cat);</code></pre>
-            
-                    <h3>compare_filterauxiliar</h3>
-                    <p><strong>Descripción:</strong> Compara dos valores enteros según un tipo de comparación.</p>
-                    <h4>Parámetros:</h4>
-                    <ul>
-                        <li><code>int a</code>: Primer valor.</li>
-                        <li><code>int b</code>: Segundo valor.</li>
-                        <li><code>int filterType</code>: Tipo de comparación (1 = mayor que, 2 = menor que, etc.).</li>
-                    </ul>
-                    <pre><code>int compare_filterauxiliar(int a, int b, int filterType);</code></pre>
+                        <h3>printTable</h3>
+                        <p><strong>Descripción:</strong> Imprime el contenido de una tabla en formato tabular en la consola.</p>
+                        <h4>Parámetros:</h4>
+                        <ul>
+                            <li><code>TABLE *t</code>: Puntero a la tabla que se imprimirá.</li>
+                        </ul>
+                        <h4>Funcionamiento:</h4>
+                        <p>Itera sobre las filas y columnas de la tabla y las imprime formateadas con separadores visuales.</p>
+                        <pre><code>void printTable(TABLE *t);</code></pre>
+                
+                        <h3>rowCopy</h3>
+                        <p><strong>Descripción:</strong> Copia el contenido de una fila específica en una nueva fila dentro de la tabla.</p>
+                        <h4>Parámetros:</h4>
+                        <ul>
+                            <li><code>TABLE *t</code>: Puntero a la tabla donde se añadirá la nueva fila.</li>
+                            <li><code>ROW *cRow</code>: Puntero a la fila que será copiada.</li>
+                        </ul>
+                        <pre><code>ROW *rowCopy(TABLE *t, ROW *cRow);</code></pre>
+                
+                        <h3>filterByIntCat</h3>
+                        <p><strong>Descripción:</strong> Filtra las filas de una tabla según una condición aplicada a una categoría numérica.</p>
+                        <h4>Parámetros:</h4>
+                        <ul>
+                            <li><code>TABLE *t</code>: Puntero a la tabla que será filtrada.</li>
+                            <li><code>char *cat</code>: Nombre de la categoría numérica a filtrar.</li>
+                            <li><code>int filterType</code>: Tipo de comparación (1 = mayor que, 2 = menor que, etc.).</li>
+                            <li><code>int com</code>: Valor con el que se comparará cada dato.</li>
+                        </ul>
+                        <pre><code>TABLE *filterByIntCat(TABLE *t, char *cat, int filterType, int com);</code></pre>
+                
+                        <h3>filterByStringCat</h3>
+                        <p><strong>Descripción:</strong> Filtra las filas de una tabla según una condición aplicada a una categoría de texto.</p>
+                        <h4>Parámetros:</h4>
+                        <ul>
+                            <li><code>TABLE *t</code>: Puntero a la tabla que será filtrada.</li>
+                            <li><code>char *categ</code>: Nombre de la categoría de texto a filtrar.</li>
+                            <li><code>char **cat</code>: Lista de valores aceptados para la categoría.</li>
+                        </ul>
+                        <pre><code>TABLE *filterByStringCat(TABLE *t, char *categ, char **cat);</code></pre>
+                
+                        <h3>compare_filterauxiliar</h3>
+                        <p><strong>Descripción:</strong> Compara dos valores enteros según un tipo de comparación.</p>
+                        <h4>Parámetros:</h4>
+                        <ul>
+                            <li><code>int a</code>: Primer valor.</li>
+                            <li><code>int b</code>: Segundo valor.</li>
+                            <li><code>int filterType</code>: Tipo de comparación (1 = mayor que, 2 = menor que, etc.).</li>
+                        </ul>
+                        <pre><code>int compare_filterauxiliar(int a, int b, int filterType);</code></pre>
             </section>
                 
                 <section id="herramientas">
@@ -363,18 +456,54 @@
                     <!-- Sección Manual de Usuario -->
                     <section id="manual_de_usuario" class="section-content">
                         <section id="inicio">
-                            <h2>Inicio Rápido</h2>
-                            <p>Para comenzar a usar el generador, primero debes...</p>
-                        </section>
-
-                        <section id="configuracion">
-                            <h2>Configuración del Sistema</h2>
-                            <p>Asegúrate de configurar correctamente las variables...</p>
+                            <h2>Inicio</h2>
+                            <p>Para comenzar a usar el generador, primero debes de iniciar sesion, si no tienes 
+                                una cuenta creada, te vas al apartado que dice crear cuenta y la creas.
+                                Una vez creada la cuenta inicias sesion con el usuario y contraseña antes
+                                creadas.
+                            </p>
+                            <img src="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal\Inicio.jpg" alt="Inicio" width="750" height="200">
                         </section>
 
                         <section id="uso">
-                            <h2>Uso del Generador</h2>
-                            <p>Para usar el generador de exámenes, sigue estos pasos...</p>
+                            <h2>Uso</h2>
+                            <p>Una vez hallas iniciado sesion, se desplegara un menu el cual podras interactuar
+                                seleccionando el numero que quieras de este 
+                            </p>
+                            <img src="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal\Menu.jpg" alt="Menu" width="600" height="150">
+                            <h3>Explicación de las opciones</h3> 
+
+                                <h4>[1] CARGAR CSV</h4>
+                                <p>Esta opción permite cargar un archivo CSV que contiene el banco de preguntas. El archivo debe seguir el formato:</p>
+                                <ul>
+                                    <li><b>ID:</b> Identificador único de la pregunta.</li>
+                                    <li><b>Problema:</b> Texto de la pregunta.</li>
+                                    <li><b>Dificultad:</b> Nivel de dificultad (1 a 5).</li>
+                                    <li><b>Peso:</b> Peso asignado a la pregunta.</li>
+                                    <li><b>Tema:</b> Categoría o tema de la pregunta.</li>
+                                </ul>
+                                <img src="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal\case1.jpg" alt="Opcion1" width="600" height="150">
+
+                                <h4>[2] ELEGIR LOS TEMAS</h4>
+                                <p>Permite al usuario seleccionar los temas específicos que desea incluir en el examen. Los temas deben coincidir con los nombres de las categorías en el archivo CSV cargado. Se ingresan de manera manual, uno por uno.</p>
+                                <img src="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal\case2.jpg" alt="Opcion2" width="600" height="300">
+
+                                <h4>[3] ELEGIR LA CANTIDAD DE PROBLEMAS</h4>
+                                <p>En esta opción, el usuario define cuántos problemas desea incluir en el examen para cada nivel de dificultad. El programa muestra la cantidad disponible de preguntas por dificultad y valida que el número ingresado no exceda el total disponible.</p>
+                                <img src="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal\case3.jpg" alt="Opcion3" width="600" height="300">
+
+                                <h4>[4] GENERAR EXAMEN</h4>
+                                <p>Genera un examen aleatorio basado en los temas y la cantidad de preguntas seleccionadas. El examen se guarda en un archivo de texto llamado <b>Examen.txt</b>, con las preguntas listadas por orden.</p>
+                                <img src="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal\case4.jpg" alt="Opcion4" width="600" height="150">
+
+                                <h4>[5] LIMPIAR TABLA</h4>
+                                <p>Reinicia la tabla de preguntas, eliminando cualquier información previamente cargada. Esto permite comenzar de nuevo con un nuevo banco de preguntas.</p>
+                                <img src="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal\case5.jpg" alt="Opcion5" width="600" height="150">   
+
+                                <h4>[0] SALIR DEL PROGRAMA</h4>
+                                <p>Finaliza la ejecución del programa y cierra la aplicación.</p>
+                                <img src="C:\Users\juanp\Documents\3 semestre\Programacion estructurada\.vscode\ProyectoFinal_PE\Proyectofinal\case0.jpg" alt="Opcion0" width="600" height="150">
+
                         </section>
                     </section>
                 </main>
